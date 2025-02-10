@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://chdmn261apiuo"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_eohkc"]
+[ext_resource type="PackedScene" uid="uid://qcjfagiaflyc" path="res://Scenes/FlashLight.tscn" id="2_xecp6"]
+[ext_resource type="PackedScene" uid="uid://bw1xgdbth8fe" path="res://Scenes/BlindLight.tscn" id="3_uv50c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_moshe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uox5a"]
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmfdp"]
+albedo_color = Color(0.35, 0.2639, 0.063, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ch8gn"]
+material = SubResource("StandardMaterial3D_xmfdp")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cq6d3"]
+font_size = 15
+
+[node name="PlayerBody" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_eohkc")
+
+[node name="StandingCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_moshe")
+disabled = true
+
+[node name="CrouchingCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.212508, 0)
+shape = SubResource("CapsuleShape3D_uox5a")
+disabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1.1, 0)
+
+[node name="PlayerNeck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="PlayerHead" type="Node3D" parent="PlayerNeck"]
+
+[node name="Hands" type="MeshInstance3D" parent="PlayerNeck/PlayerHead"]
+transform = Transform3D(0.18874, -0.128229, -0.0935724, 0.1549, 0.115303, 0.12463, -0.0198872, -0.318868, 0.0826958, 0.460485, -0.413429, -0.300511)
+mesh = SubResource("CapsuleMesh_ch8gn")
+skeleton = NodePath("../../..")
+
+[node name="ViewBobbing" type="Node3D" parent="PlayerNeck/PlayerHead"]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerNeck/PlayerHead/ViewBobbing"]
+
+[node name="Control" type="Control" parent="PlayerNeck/PlayerHead/ViewBobbing/Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="PlayerNeck/PlayerHead/ViewBobbing/Camera3D/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3.72, 1)
+
+[node name="Label" type="Label" parent="PlayerNeck/PlayerHead/ViewBobbing/Camera3D/Control/Panel"]
+layout_mode = 0
+offset_top = 8.0
+offset_right = 101.0
+offset_bottom = 31.0
+scale = Vector2(0.258065, 1)
+text = "Key Found = 0"
+label_settings = SubResource("LabelSettings_cq6d3")
+
+[node name="Flashlight" parent="PlayerNeck/PlayerHead" instance=ExtResource("2_xecp6")]
+process_mode = 4
+transform = Transform3D(0.251554, 0, 0, 0, -0.251554, -2.19916e-08, 0, 2.19916e-08, -0.251554, 0.301241, -0.351652, -0.579747)
+visible = false
+
+[node name="BlindLight" parent="PlayerNeck/PlayerHead" instance=ExtResource("3_uv50c")]
+process_mode = 4
+transform = Transform3D(0.25, 0, 0, 0, -0.25, 2.18557e-08, 0, -2.18557e-08, -0.25, 0.289883, -0.344148, -0.599997)
+visible = false

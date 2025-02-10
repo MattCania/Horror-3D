@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://brftsmrfvb4m3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b6xy7"]
+font_size = 8
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Items" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+offset_right = 98.0
+grow_vertical = 0
+
+[node name="FlashLight" type="Label" parent="Items"]
+layout_mode = 0
+offset_right = 75.0
+offset_bottom = 23.0
+text = "Flashlight - 2"
+label_settings = SubResource("LabelSettings_b6xy7")
+
+[node name="Blinds" type="Label" parent="Items"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+offset_right = 75.0
+offset_bottom = 9.0
+grow_vertical = 0
+text = "Flash - 3"
+label_settings = SubResource("LabelSettings_b6xy7")
