@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dflyt7fix3gne"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/KeysCollision.gd" id="1_3018m"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mgalh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv6a1"]
+albedo_color = Color(6.487, 100, 0.541, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y4y58"]
+
+[node name="Area3D" type="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+collision_mask = 2
+script = ExtResource("1_3018m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_mgalh")
+surface_material_override/0 = SubResource("StandardMaterial3D_hv6a1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_y4y58")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
