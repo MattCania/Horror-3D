@@ -4,7 +4,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Tools
 @onready var flashlight = $PlayerNeck/PlayerHead/Flashlight
-@onready var blindlight = $PlayerNeck/PlayerHead/BlindLight
 
 # Non Specific
 @onready var playerBody = $"."
@@ -71,18 +70,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("tool_1"):
 		flashlight.visible = false
 		flashlight.process_mode = Node.PROCESS_MODE_DISABLED
-		blindlight.visible = false
-		blindlight.process_mode = Node.PROCESS_MODE_ALWAYS
 	if event.is_action_pressed("tool_2"):
 		flashlight.visible = true
 		flashlight.process_mode = Node.PROCESS_MODE_INHERIT
-		blindlight.visible = false
-		blindlight.process_mode = Node.PROCESS_MODE_ALWAYS
 	if event.is_action_pressed("tool_3"):
 		flashlight.visible = false
 		flashlight.process_mode = Node.PROCESS_MODE_DISABLED
-		blindlight.visible = true
-		blindlight.process_mode = Node.PROCESS_MODE_ALWAYS
 
 # Mouse Motion Handling Events
 func _input(event):

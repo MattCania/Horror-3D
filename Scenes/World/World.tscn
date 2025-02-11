@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy8tx0fr4e8c6"]
+[gd_scene load_steps=6 format=3 uid="uid://cy8tx0fr4e8c6"]
 
-[ext_resource type="PackedScene" uid="uid://dflyt7fix3gne" path="res://Scenes/Objects/Keys.tscn" id="1_q6dah"]
 [ext_resource type="MeshLibrary" uid="uid://c61ei8h785jfe" path="res://Assets/Tiles/Grid_Tiles/Final Grid/Main.tres" id="2_n1nbd"]
 [ext_resource type="PackedScene" uid="uid://chdmn261apiuo" path="res://Scenes/Characters/Player.tscn" id="3_7k8tm"]
 [ext_resource type="PackedScene" uid="uid://dm1b4x64at66m" path="res://Scenes/World/KillZone.tscn" id="4_fn0kf"]
@@ -16,9 +15,6 @@ ambient_light_energy = 4.91
 [node name="World" type="Node3D"]
 
 [node name="Stage" type="Node3D" parent="."]
-
-[node name="Area3D" parent="Stage" instance=ExtResource("1_q6dah")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.859075, -7.73262)
 
 [node name="GridMap" type="GridMap" parent="Stage"]
 transform = Transform3D(0.965185, 0, 0, 0, 0.965185, 0, 0, 0, 0.965185, 0, 0, 0)
@@ -39,7 +35,6 @@ omni_attenuation = 0.615572
 omni_shadow_mode = 0
 
 [node name="Environment" type="Node3D" parent="."]
-visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_tb3ed")
@@ -53,3 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, -1)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 2, 0)
 shape = SubResource("WorldBoundaryShape3D_ouv4j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 9)
+light_energy = 10.0
