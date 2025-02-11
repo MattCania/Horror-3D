@@ -19,7 +19,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Player Movement Variables
 @export var baseSpeed = 5.0
-var jumpStrength = 4.5
+@export var jumpStrength = 4.5
 const walkSpeed = 4.0
 const sprintSpeed = 7.5
 const crouchSpeed = 2.5

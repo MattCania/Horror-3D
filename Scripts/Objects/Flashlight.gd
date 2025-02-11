@@ -14,7 +14,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_flashlight") || event.is_action_pressed("mouse_left"):
 		if !flashlightOn:
 			flashlightOn = true
-			spotlight3D.light_energy = 50.0
+			spotlight3D.light_energy = 1.0
 		else:
 			flashlightOn = false
 			spotlight3D.light_energy = 0.0
