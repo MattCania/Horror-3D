@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cgxqbvrum0q3a"
-valid=false
+uid="uid://cplxpw5arfn5q"
+path="res://.godot/imported/Dungeon Tiles.glb-d726bfc9df39ba4589d297c9c3ab8b43.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Final.gltf"
+source_file="res://Assets/Models/Dungeon Tiles.glb"
+dest_files=["res://.godot/imported/Dungeon Tiles.glb-d726bfc9df39ba4589d297c9c3ab8b43.scn"]
 
 [params]
 
